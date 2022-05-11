@@ -1,0 +1,43 @@
+{
+  "coord": {
+    "lon": -56.1674,
+    "lat": -34.8335
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 17.01,
+    "feels_like": 16.31,
+    "temp_min": 15.84,
+    "temp_max": 17.01,
+    "pressure": 1019,
+    "humidity": 59
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 8.75,
+    "deg": 160
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1652295042,
+  "sys": {
+    "type": 1,
+    "id": 8687,
+    "country": "UY",
+    "sunrise": 1652264923,
+    "sunset": 1652302407
+  },
+  "timezone": -10800,
+  "id": 3441575,
+  "name": "Montevideo",
+  "cod": 200
+}
