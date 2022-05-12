@@ -19,6 +19,7 @@ export default function App() {
 	 */
 
 	const [forecastDisplay, setForecastDisplay] = useState(null)
+	useEffect(() => {}, [])
 
 	return (
 		<DayCycleBackground>

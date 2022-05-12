@@ -1,8 +1,7 @@
 import React from "react"
-import { ScrollView, Dimensions, View } from "react-native"
+import { ScrollView, View } from "react-native"
 import ForecastItem from "./ForecastItem"
 
-const win = Dimensions.get("window")
 const ForecastList = ({ forecast, setDisplay }) => {
 	return (
 		<View style={{ padding: 10, height: 170 }}>

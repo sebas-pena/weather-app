@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 	},
 	small: {
-		fontSize: 20,
+		fontSize: 18,
 	},
 	medium: {
 		fontSize: 30,
