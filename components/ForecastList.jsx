@@ -3,15 +3,20 @@ import { ScrollView, Dimensions, View } from "react-native"
 import ForecastItem from "./ForecastItem"
 
 const win = Dimensions.get("window")
-const ForecastList = ({ forecast }) => {
+const ForecastList = ({ forecast, setDisplay }) => {
 	return (
-		<ScrollView horizontal>
-			<View style={{ width: win.width / 10 }}></View>
-			{forecast.map((item) => (
-				<ForecastItem forecast={item} />
-			))}
-			<View style={{ width: win.width / 10 - 10 }}></View>
-		</ScrollView>
+		<View style={{ padding: 10, height: 170 }}>
+			<ScrollView horizontal>
+				{forecast.map((item, index) => (
+					<ForecastItem
+						forecast={item}
+						index={index}
+						key={item.dt}
+						setDisplay={setDisplay}
+					/>
+				))}
+			</ScrollView>
+		</View>
 	)
 }
 

@@ -14,7 +14,6 @@ import heavyRain from "../assets/images/icons/heavy-rain.png"
 import snow from "../assets/images/icons/snow.png"
 
 const WeatherIcons = ({ id, style }) => {
-	console.log(id)
 	const Icons = {
 		"01d": sun,
 		"01n": moon,

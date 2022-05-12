@@ -1,4 +1,4 @@
-import { ImageBackground, Dimensions } from "react-native"
+import { ImageBackground, Dimensions, StyleSheet } from "react-native"
 import Constants from "expo-constants"
 
 // BACKGROUNDS
@@ -40,18 +40,18 @@ const DayCycleBackground = ({ children, style }) => {
 		time = "midnight"
 	}
 
-	const styles = [
-		{
+	const styles = StyleSheet.create({
+		container: {
 			width: win.width,
 			height: win.height,
 			marginTop: Constants.statusBarHeight,
-			paddingTop: 20,
+			alignItems: "center",
+			paddingVertical: 20,
 		},
-		style,
-	]
+	})
 	return (
 		<ImageBackground
-			style={styles}
+			style={[styles.container, style]}
 			source={backgrounds[time]}
 			resizeMode="cover"
 		>

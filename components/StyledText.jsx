@@ -5,8 +5,11 @@ const styles = StyleSheet.create({
 		color: "#fff",
 		fontFamily: "sans-serif",
 	},
-	small: {
+	extraSmall: {
 		fontSize: 16,
+	},
+	small: {
+		fontSize: 20,
 	},
 	medium: {
 		fontSize: 30,
@@ -37,9 +40,11 @@ const StyledText = ({
 	bold,
 	light,
 	regular,
+	extraSmall,
 }) => {
 	const TextStyles = [
 		styles.text,
+		small && styles.extraSmall,
 		small && styles.small,
 		medium && styles.medium,
 		large && styles.large,
