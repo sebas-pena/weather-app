@@ -1,19 +1,13 @@
 import { View, StyleSheet, Dimensions, Image } from "react-native"
+import ForecastDisplayInfo from "./ForecastDisplayInfo"
 import StyledText from "./StyledText"
 
 // images
-import thermometerIcon from "../assets/images/icons/thermometer.png"
-import windIcon from "../assets/images/icons/wind.png"
-import moonriseIcon from "../assets/images/icons/moonrise.png"
-import moonsetIcon from "../assets/images/icons/moonset.png"
-import sunriseIcon from "../assets/images/icons/sunrise.png"
-import sunsetIcon from "../assets/images/icons/sunset.png"
-import humidityIcon from "../assets/images/icons/humidity.png"
+
 import WeatherIcons from "./WeatherIcons"
 const win = Dimensions.get("window")
 
 const ForecastDisplay = ({ display }) => {
-	display || (display = { ...responseExample.daily[0], day: "Today" })
 	const {
 		day,
 		weather,
@@ -54,35 +48,13 @@ const ForecastDisplay = ({ display }) => {
 						alignItems: "flex-start",
 					}}
 				>
-					<View style={styles.contentCenter}>
-						<View style={[styles.containerHorizontal, styles.contentCenter]}>
-							<Image source={humidityIcon} style={styles.icon} />
-							<StyledText small>{humidity}%</StyledText>
-						</View>
-						<StyledText extrasmall bold>
-							Humidity
-						</StyledText>
-					</View>
-
-					<View style={styles.contentCenter}>
-						<View style={[styles.containerHorizontal, styles.contentCenter]}>
-							<Image source={sunriseIcon} style={styles.icon} />
-							<StyledText small>{sunRise}</StyledText>
-						</View>
-						<StyledText extrasmall bold>
-							Sunrise
-						</StyledText>
-					</View>
-
-					<View style={styles.contentCenter}>
-						<View style={[styles.containerHorizontal, styles.contentCenter]}>
-							<Image source={sunsetIcon} style={styles.icon} />
-							<StyledText small>{sunSet}</StyledText>
-						</View>
-						<StyledText extrasmall bold>
-							Sunset
-						</StyledText>
-					</View>
+					<ForecastDisplayInfo
+						title="Humidity"
+						value={humidity + "%"}
+						icon="humidity"
+					/>
+					<ForecastDisplayInfo title="Sunrise" value={sunRise} icon="sunrise" />
+					<ForecastDisplayInfo title="Sunset" value={sunSet} icon="sunset" />
 				</View>
 
 				<View style={[styles.contentCenter, { flex: 1 }]}>
@@ -100,37 +72,17 @@ const ForecastDisplay = ({ display }) => {
 						alignItems: "flex-end",
 					}}
 				>
-					<View>
-						<View style={styles.contentCenter}>
-							<View style={[styles.containerHorizontal, styles.contentCenter]}>
-								<Image source={windIcon} style={styles.icon} />
-								<StyledText small>{windSpeed} m/s</StyledText>
-							</View>
-							<StyledText extrasmall bold>
-								Wind
-							</StyledText>
-						</View>
-					</View>
-
-					<View style={styles.contentCenter}>
-						<View style={[styles.containerHorizontal, styles.contentCenter]}>
-							<Image source={moonriseIcon} style={styles.icon} />
-							<StyledText small>{moonRise}</StyledText>
-						</View>
-						<StyledText extrasmall bold>
-							Moonrise
-						</StyledText>
-					</View>
-
-					<View style={styles.contentCenter}>
-						<View style={[styles.containerHorizontal, styles.contentCenter]}>
-							<Image source={moonsetIcon} style={styles.icon} />
-							<StyledText small>{moonSet}</StyledText>
-						</View>
-						<StyledText extrasmall bold>
-							Moonset
-						</StyledText>
-					</View>
+					<ForecastDisplayInfo
+						title="Wind Speed"
+						value={windSpeed + " m/s"}
+						icon="wind"
+					/>
+					<ForecastDisplayInfo
+						title="Moonrise"
+						value={moonRise}
+						icon="moonrise"
+					/>
+					<ForecastDisplayInfo title="Moonset" value={moonSet} icon="moonset" />
 				</View>
 			</View>
 			<View style={styles.containerHorizontal}>
@@ -146,7 +98,7 @@ const ForecastDisplay = ({ display }) => {
 						<View
 							style={[styles.containerHorizontal, { alignItems: "center" }]}
 						>
-							<Image source={thermometerIcon} style={styles.icon} />
+							<WeatherIcons id="thermometer" style={styles.icon} />
 							<StyledText small>{Math.floor(display.temp[time])}°</StyledText>
 						</View>
 						<StyledText samll bold>

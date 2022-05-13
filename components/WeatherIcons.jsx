@@ -11,9 +11,17 @@ import moon from "../assets/images/icons/moon.png"
 import lightRain from "../assets/images/icons/light-rain.png"
 import heavyRain from "../assets/images/icons/heavy-rain.png"
 import snow from "../assets/images/icons/snow.png"
+import thermometerIcon from "../assets/images/icons/thermometer.png"
+import windIcon from "../assets/images/icons/wind.png"
+import moonriseIcon from "../assets/images/icons/moonrise.png"
+import moonsetIcon from "../assets/images/icons/moonset.png"
+import sunriseIcon from "../assets/images/icons/sunrise.png"
+import sunsetIcon from "../assets/images/icons/sunset.png"
+import humidityIcon from "../assets/images/icons/humidity.png"
 
 const WeatherIcons = ({ id, style }) => {
 	const Icons = {
+		// Api codes
 		"01d": sun,
 		"01n": moon,
 		"02d": cloud,
@@ -32,6 +40,14 @@ const WeatherIcons = ({ id, style }) => {
 		"13n": snow,
 		"50d": fogDay,
 		"50n": fogNight,
+		// ------
+		thermometer: thermometerIcon,
+		wind: windIcon,
+		moonrise: moonriseIcon,
+		moonset: moonsetIcon,
+		sunrise: sunriseIcon,
+		sunset: sunsetIcon,
+		humidity: humidityIcon,
 	}
 	return <Image source={Icons[id]} style={style} />
 }

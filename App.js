@@ -1,25 +1,23 @@
 import { useState, useEffect } from "react"
 import { StatusBar } from "expo-status-bar"
-import { View, Dimensions } from "react-native"
-import responseExample from "./responseExample.json"
-import { useGetCurrentWeather } from "./hooks/useGetCurrentWeather"
+import { View } from "react-native"
+import { useForecast } from "./hooks/useForecast"
 import DayCycleBackground from "./components/DayCycleBackground"
 import StyledText from "./components/StyledText"
-const win = Dimensions.get("window")
 
-// LIMPIAR
 import ForecastList from "./components/ForecastList"
 import ForecastDisplay from "./components/ForecastDisplay"
 
 export default function App() {
-	/*   const weather = useGetCurrentWeather()
-	 */
+	const weather = useForecast()
 
-	/*   weather && console.log(weather)
-	 */
+	const [display, setDisplay] = useState(null)
 
-	const [forecastDisplay, setForecastDisplay] = useState(null)
-	useEffect(() => {}, [])
+	useEffect(() => {
+		if (weather) {
+			setDisplay({ ...weather.daily[0], day: "Today" })
+		}
+	}, [weather])
 
 	return (
 		<DayCycleBackground>
@@ -27,17 +25,18 @@ export default function App() {
 				<StatusBar style="auto" />
 				<StyledText medium>Now</StyledText>
 				<StyledText large light style={{ marginBottom: -10 }}>
-					{Math.floor(responseExample.current.temp)}°
+					{weather && Math.floor(weather.current.temp)}°
 				</StyledText>
 				<StyledText medium light>
-					{responseExample.current.weather[0].description}
+					{weather && weather.current.weather[0].description}
 				</StyledText>
 			</View>
-			<ForecastDisplay display={forecastDisplay} />
-			<ForecastList
-				forecast={responseExample.daily}
-				setDisplay={setForecastDisplay}
-			/>
+			{display && (
+				<>
+					<ForecastDisplay display={display} />
+					<ForecastList forecast={weather.daily} setDisplay={setDisplay} />
+				</>
+			)}
 		</DayCycleBackground>
 	)
 }
